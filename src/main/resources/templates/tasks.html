@@ -106,6 +106,7 @@
 <body>
 <div class="todo-card">
     <h1>Todo Application</h1>
+<<<<<<< HEAD
     <form action="/tasks" method="post" class="mb-4 row g-3" th:object="${taskDto}">
         <div class="col-9">
             <input type="text" th:field="*{title}" placeholder="Add a new task..." required autocomplete="off" />
@@ -120,6 +121,23 @@
     <th:block th:each="task : ${tasks}">
         <div th:classappend="${task.completed} ? 'text-strikethrough' : ''" class="task-item">
             <span th:text="${task.title}">Task Title</span>
+=======
+    <form th:action="@{/tasks}" th:object="${taskDTO}" method="post">
+        <input type="text" th:field="*{title}" placeholder="Task Title" required>
+        <input type="text" th:field="*{categoryName}" placeholder="Category Name" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+
+
+    <th:block th:each="task : ${tasks}">
+        <div th:classappend="${task.completed} ? 'text-strikethrough' : ''" class="task-item">
+            <span>
+                <b th:text="${task.title}">Task Title</b>
+                <br />
+                <small th:text="'Category: ' + ${task.category.name}">Category</small>
+            </span>
+>>>>>>> 11a6183 (Proje güncellemeleri - entity ilişkileri ve CRUD)
             <div>
                 <a th:href="@{/{id}/toggle(id=${task.id})}" class="btn btn-outline-secondary btn-sm me-2">Toggle</a>
                 <a th:href="@{/{id}/delete(id=${task.id})}" class="btn btn-outline-danger btn-sm">Delete</a>
